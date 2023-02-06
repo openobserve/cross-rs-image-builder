@@ -1,6 +1,14 @@
 FROM ghcr.io/cross-rs/x86_64-unknown-linux-gnu:latest
 
+# Install protoc
+RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v22.0-rc2/protoc-22.0-rc-2-linux-x86_64.zip
+RUN unzip protoc-22.0-rc-2-linux-x86_64.zip -d protoc
+RUN cp protoc/bin/protoc /usr/local/bin/
+RUN cp -r protoc/include/google /usr/local/include/
+
 RUN dpkg --add-architecture amd64 && \
   apt-get update && \
-  apt-get install --assume-yes protobuf-compiler libssl-dev
+  apt-get install --assume-yes openssl libssl-dev
+
+
 
