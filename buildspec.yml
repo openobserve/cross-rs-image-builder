@@ -10,7 +10,7 @@ phases:
       - pwd
       # - GIT_TAG="$(git describe --tags --abbrev=0)"
       # - GIT_HASH="$(git rev-parse --short HEAD)"
-      - VERSION=v0.0.1
+      - VERSION=v0.0.2
       - docker build -t cross-rs/x86_64-unknown-linux-gnu:$VERSION -f Dockerfile.cross.x86_64-unknown-linux-gnu .
       - docker tag cross-rs/x86_64-unknown-linux-gnu:$VERSION public.ecr.aws/zinclabs/cross-rs/x86_64-unknown-linux-gnu:$VERSION
       - docker push public.ecr.aws/zinclabs/cross-rs/x86_64-unknown-linux-gnu:$VERSION
