@@ -10,11 +10,21 @@ phases:
       - pwd
       # - GIT_TAG="$(git describe --tags --abbrev=0)"
       # - GIT_HASH="$(git rev-parse --short HEAD)"
-      - docker build -t cross-rs-x86_64-unknown-linux-gnu:v0.0.1 -f Dockerfile.cross.x86_64-unknown-linux-gnu .
-      - docker tag cross-rs-x86_64-unknown-linux-gnu:v0.0.1 public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:v0.0.1
-      - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:v0.0.1
+      - VERSION=v0.0.1
+      - docker build -t cross-rs/x86_64-unknown-linux-gnu:$VERSION -f Dockerfile.cross.x86_64-unknown-linux-gnu .
+      - docker tag cross-rs/x86_64-unknown-linux-gnu:$VERSION public.ecr.aws/zinclabs/cross-rs/x86_64-unknown-linux-gnu:$VERSION
+      - docker push public.ecr.aws/zinclabs/cross-rs/x86_64-unknown-linux-gnu:$VERSION
       # - 
-      # - docker build -t cross-rs-x86_64-unknown-linux-gnu:latest -f Dockerfile.cross.x86_64-unknown-linux-gnu .
-      # - docker tag cross-rs-x86_64-unknown-linux-gnu:latest public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest
-      # - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest
+      - docker build -t cross-rs/aarch64-unknown-linux-gnu:$VERSION -f Dockerfile.cross.aarch64-unknown-linux-gnu .
+      - docker tag cross-rs/aarch64-unknown-linux-gnu:$VERSION public.ecr.aws/zinclabs/cross-rs/aarch64-unknown-linux-gnu:$VERSION
+      - docker push public.ecr.aws/zinclabs/cross-rs/aarch64-unknown-linux-gnu:$VERSION
+      - 
+      - docker build -t cross-rs/aarch64-apple-darwin:$VERSION -f Dockerfile.cross.aarch64-apple-darwin .
+      - docker tag cross-rs/aarch64-apple-darwin:$VERSION public.ecr.aws/zinclabs/cross-rs/aarch64-apple-darwin:$VERSION
+      - docker push public.ecr.aws/zinclabs/cross-rs/aarch64-apple-darwin:$VERSION
+      - 
+      - docker build -t cross-rs/x86_64-apple-darwin:$VERSION -f Dockerfile.cross.x86_64-apple-darwin .
+      - docker tag cross-rs/x86_64-apple-darwin:$VERSION public.ecr.aws/zinclabs/cross-rs/x86_64-apple-darwin:$VERSION
+      - docker push public.ecr.aws/zinclabs/cross-rs/x86_64-apple-darwin:$VERSION
+
       
