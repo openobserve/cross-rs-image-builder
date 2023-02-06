@@ -8,11 +8,11 @@ phases:
   build:
     commands:
       - pwd
-      - GIT_TAG="$(git describe --tags --abbrev=0)"
-      - GIT_HASH="$(git rev-parse --short HEAD)"
-      - docker build -t cross-rs-x86_64-unknown-linux-gnu:latest-amd64 -f Dockerfile.cross.x86_64-unknown-linux-gnu .
-      - docker tag cross-rs-x86_64-unknown-linux-gnu:latest-amd64 public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:$GIT_TAG-$GIT_HASH-amd64
-      - docker tag cross-rs-x86_64-unknown-linux-gnu:latest-amd64 public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest-amd64
-      - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:$GIT_TAG-$GIT_HASH-amd64
-      - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest-amd64
+      # - GIT_TAG="$(git describe --tags --abbrev=0)"
+      # - GIT_HASH="$(git rev-parse --short HEAD)"
+      - docker build -t cross-rs-x86_64-unknown-linux-gnu:latest -f Dockerfile.cross.x86_64-unknown-linux-gnu .
+      # - docker tag cross-rs-x86_64-unknown-linux-gnu:latest-amd64 public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:$GIT_TAG-$GIT_HASH-amd64
+      - docker tag cross-rs-x86_64-unknown-linux-gnu:latest public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest
+      # - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:$GIT_TAG-$GIT_HASH-amd64
+      - docker push public.ecr.aws/zinclabs/cross-rs-x86_64-unknown-linux-gnu:latest
       
