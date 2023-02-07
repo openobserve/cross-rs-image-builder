@@ -10,4 +10,4 @@ RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v22.0-rc2
 RUN unzip protoc-22.0-rc-2-linux-aarch_64.zip -d protoc
 RUN cp protoc/bin/protoc /usr/local/bin/
 RUN cp -r protoc/include/google /usr/local/include/
-ENV OPENSSL_DIR=/usr/lib/ssl
+# ENV OPENSSL_DIR=/usr/lib/ssl
